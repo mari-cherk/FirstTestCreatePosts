@@ -6,11 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.sql.DriverManager;
+import java.time.Duration;
 
 public class FirstTestCreatePosts {
 
@@ -58,16 +60,38 @@ public class FirstTestCreatePosts {
         WebElement questionBodyField = driver.findElement(By.xpath("//*[@class='fr-element fr-view']"));
         questionBodyField.sendKeys("The newest question from marinac for today");
 
-        WebElement topicField = driver.findElement(By.xpath("//*[@id='s2id_topics']"));
+        //WebElement topicField = driver.findElement(By.xpath("//*[@id='s2id_topics']"));
+        WebElement topicField = driver.findElement(By.xpath("//*[@id='s2id_autogen1']"));
+
+        //WebElement topicItem = driver.findElement(By.xpath("select2-container select2-container-multi input-with-error select2-dropdown-open"));
 
         Actions goToProduct = new Actions(driver);
 
         //goToProduct.moveToElement(topicField).sendKeys("qa").click().build().perform();
 
-        goToProduct.click(topicField).sendKeys("qa").sendKeys(Keys.ENTER).build().perform();
+        goToProduct.sendKeys(topicField,"qa").click(driver.findElement(By.xpath("//*[@class='select2-result-label' and contains(text(),'qa')]"))).build().perform();
 
+        //topicField.sendKeys("qa");
 
+        //WebElement neededTopic = driver.findElement(By.xpath("//*[@class='select2-results']"));
+        //Select select = new Select(neededTopic);
+        //select.selectByVisibleText("qa");
 
+        //WebElement neededTopic = driver.findElement(By.xpath("//*[@class='select2-result-label']/li[1]/div']"));
+        //WebElement neededTopic = driver.findElement(By.xpath("//*[@class='select2-result-label' and contains(text(),'qa')]"));
+
+        //neededTopic.click();
+
+        //topicField.sendKeys(Keys.TAB);
+
+        //WebElement topicField2 = driver.findElement(By.xpath("//*[@id='s2id_topics']"));
+
+        //topicField2.click();
+
+        //topicField2.sendKeys(Keys.ENTER);
+        //driver.findElement(By.xpath("//html")).click();
+
+        //driver.findElement(By.xpath("//*[@class='preview-tab']")).click();
 
     }
 
